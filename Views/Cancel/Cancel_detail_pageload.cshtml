@@ -1,0 +1,56 @@
+﻿@model GasBooking_coreMVC.Models.booked_detailsClass
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CYLINDER ID</th>
+            <th>CUSTOMER ID</th>
+            <th>CONSUMER NUMBER</th>
+            <th>STAFF ID</th>
+            <th>TOTAL AMOUNT</th>
+            <th>DATE OF BOOKING</th>
+            <th>BOOKING MODE</th>
+            <th>STATUS</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+            <tr>
+             <td>@Model.bid</td>
+            <td>@Model.clyid</td>
+            <td>@Model.cusid</td>
+            <td>@Model.consnum</td>
+            <td>@Model.stfid</td>
+            <td>@Model.amount</td>
+            <td>@Model.date</td>
+            <td>@Model.bokmode</td>
+            <td>@Model.sts</td>
+                <td>
+                @using (Html.BeginForm("Cancel_click", "Cancel", new { id = Model.bid }, FormMethod.Post))
+                    {
+                        <button class="btn btn-success btn-xs" type="submit">
+                            Confirm Cancel
+                        </button>
+                    }
+
+                </td>
+            </tr>
+        
+
+    </tbody>
+    
+</table>
+<div>
+    @Html.ActionLink("Back To Home Page", "customerHome", "login")
+</div>
+@{
+    if (@TempData["cmsg"] != null)
+    {
+        <script>
+            alert('@TempData["cmsg"]);
+          
+        </script>
+    }
+
+}

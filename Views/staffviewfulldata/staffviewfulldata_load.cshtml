@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GasBooking_coreMVC.Models.Deliveryclass>
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc
+
+<h1>BOOKING DETAILS</h1>
+
+@if (Model != null && Model.Any())
+{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CYLINDER ID</th>
+                <th>CUSTOMER ID</th>
+                <th>CONSUMER NUMBER</th>
+                <th>STAFF ID</th>
+                <th>TOTAL AMOUNT</th>
+                <th>DATE OF BOOKING</th>
+                <th>BOOKING MODE</th>
+                <th>STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.boid</td>
+                    <td>@customer.clyid</td>
+                    <td>@customer.cusid</td>
+                    <td>@customer.consnum</td>
+                    <td>@customer.stfid</td>
+                    <td>@customer.amount</td>
+                    <td>@customer.daate</td>
+                    <td>@customer.bokmode</td>
+                    <td>@customer.sts</td>
+                    <td>
+
+                        @using (Html.BeginForm("delivaryclick", "staffviewfulldata", new { bid = customer.boid, cid = customer.cusid, clyid = customer.clyid }, FormMethod.Post))
+                        {
+                            <button class="btn btn-success btn-xs" type="submit">
+                                Deliver
+                            </button>
+                        }
+                       
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}
+else
+{
+    <p>No Records found</p>
+}
+
+<div>
+    @Html.ActionLink("Back To Home", "StaffHome", "login", null, new { @class = "btn btn-primary", title = "Click go back to home page" })
+</div>
+
+ 

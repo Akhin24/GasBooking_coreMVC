@@ -1,0 +1,29 @@
+﻿@model GasBooking_coreMVC.Models.StaffBooking
+<form asp-action="staffcylinderbook_click" class="form-horizondal" method="post">
+    <div>
+        <label asp-for="SelectedModeId">Mode</label>
+        <select asp-for="SelectedModeId" asp-items="Model.ModelList" class="form-control">Select Mode</select>
+    </div>
+
+    <div>
+        <label asp-for="SelectedCylinderId">Cylinder Type</label>
+        <select asp-for="SelectedCylinderId" asp-items="Model.CylinderList" class="form-control">Select Cylinder</select>
+    </div>
+    <div>
+        <label>Consumer Number</label>
+        <input asp-for="consumbernumber" class="form-control" id="t1" />
+    </div>
+    <div>
+        <input type="submit" value="Book" class="btn btn-success" />
+    </div>
+</form>
+@{
+    if (@TempData["sbmsg"] != null)
+    {
+        <script>
+            alert('@TempData["sbmsg"]');
+            document.getElementById("t1").value = "";
+        </script>
+    }
+
+}
